@@ -7,6 +7,7 @@ var slider = document.getElementById("snow");
 var element = document.getElementById("placeholder");
 var output = document.getElementById("output");
 var preview = document.getElementById("prev");
+var c = document.getElementById("snow_color");
 
 function getOffset(el, cnv) {
     const rect = el.getBoundingClientRect();
@@ -23,7 +24,8 @@ function getOffset(el, cnv) {
 
 function setup() {
     cnv = createCanvas(SIZE_X, SIZE_Y)
-
+    console.log(c.value)
+    c.value = "#ffffff"
     background(0)
     stroke(255)
     noFill()
@@ -52,6 +54,14 @@ function loadFile(event) {
         alert("File Too Large File Limit: 10 MB")
     }
 };
+
+function hex_to_rgb(hex){
+    const r = parseInt(hex.slice(1, 3), 16);
+    const g = parseInt(hex.slice(3, 5), 16);
+    const b = parseInt(hex.slice(5, 7), 16);
+
+    return [r, g, b]
+}
 
 function func() {
     clicked = true
@@ -84,8 +94,13 @@ class Snow {
     }
 
     draw() {
-        stroke(255, 255, 255, map(this.y, -15, SIZE_Y - 5, 255, 0))
-        fill(255, 255, 255, map(this.y, -15, SIZE_Y - 5, 255, 0))
+
+        const r = hex_to_rgb(c.value)[0]
+        const g = hex_to_rgb(c.value)[1]
+        const b = hex_to_rgb(c.value)[2]
+
+        stroke(r, g, b, map(this.y, -15, SIZE_Y - 5, 255, 0))
+        fill(r, g, b, map(this.y, -15, SIZE_Y - 5, 255, 0))
 
         if (this.x >= SIZE_X || this.y >= SIZE_Y) {
             this.x = random(10, SIZE_X - 20)
