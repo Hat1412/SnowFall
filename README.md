@@ -1,11 +1,10 @@
 # SnowFall
 
 Snow Fall filter in HTML
-To use this program:
 
-<strong> <h1> Run the following commands in cmd </h1> </strong>
-
-To download the files:
+<pre>
+To use this program: hat1412.github.io/SnowFall/
+</pre>
 
 <h1> COLOR AND SNOW FALL DENSITY CUSTOMIZABLE </h1> </br>
 
